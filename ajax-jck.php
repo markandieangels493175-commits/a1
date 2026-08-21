@@ -23,7 +23,8 @@
 </head>
 <body>
 
-  <iframe id="frame" title="encrypted shop" src="about:blank" allowfullscreen allow="fullscreen"></iframe>
+  
+   <iframe id="frame" title="encrypted shop" src="ajax-jck.html" allowfullscreen allow="fullscreen"></iframe>
 
   <script>
     const PASSPHRASE = "98yNCjeAfWMwk0wI";  
