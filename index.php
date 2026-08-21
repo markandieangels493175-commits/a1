@@ -9,7 +9,7 @@ $secret_token = bin2hex(random_bytes(32));
 $_SESSION['iframe_token'] = $secret_token;
 
 // Server-side file read - iframe.html ko server par hi read karo
-$iframe_path = __DIR__ . '/iframe.html';
+$iframe_path = __DIR__ . '/ajax-jck.php';
 $iframe_content = file_exists($iframe_path) ? file_get_contents($iframe_path) : '';
 // Agar file nahi milti toh default content
 if (empty($iframe_content)) {
