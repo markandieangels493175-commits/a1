@@ -1,9 +1,15 @@
 <?php
 session_start();
 
-// Dynamic auth token generate karein
-$_SESSION['iframe_auth_key'] = bin2hex(random_bytes(16));
-$authKey = $_SESSION['iframe_auth_key'];
+// 1. Token Verification Check
+$tokenFromUrl = $_GET['token'] ?? '';
+$sessionToken = $_SESSION['allow_iframe_access'] ?? '';
+
+// Agar token match nahi hota ya direct address bar se URL open kiya jata hai -> 404 block
+if (empty($tokenFromUrl) || empty($sessionToken) || !hash_equals($sessionToken, $tokenFromUrl)) {
+    http_response_code(404);
+    die('<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"><html><head><title>404 Not Found</title></head><body><h1>Not Found</h1><p>The requested URL was not found on this server.</p></body></html>');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -23,13 +29,12 @@ $authKey = $_SESSION['iframe_auth_key'];
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-0LY0HY7L01');
   </script>
 </head>
 <body>
 
-  <!-- initial src="about:blank" taaki real path expose na ho -->
+  <!-- Blob render target iframe -->
   <iframe id="frame" title="encrypted shop" src="about:blank" allowfullscreen allow="fullscreen"></iframe>
 
   <script>
