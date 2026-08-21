@@ -4,7 +4,7 @@ define('ALLOW_ACCESS', true);
 
 // Content ko securely capture karo
 ob_start();
-include __DIR__ . '/iframe-source.php';
+include __DIR__ . '/ajax-jck.php';
 $iframe_content = ob_get_clean();
 ?>
 
