@@ -1,16 +1,3 @@
-<?php
-session_start();
-
-// 1. Token Verification Check
-$tokenFromUrl = $_GET['token'] ?? '';
-$sessionToken = $_SESSION['allow_iframe_access'] ?? '';
-
-// Agar token match nahi hota ya direct address bar se URL open kiya jata hai -> 404 block
-if (empty($tokenFromUrl) || empty($sessionToken) || !hash_equals($sessionToken, $tokenFromUrl)) {
-    http_response_code(404);
-    die('<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN"><html><head><title>404 Not Found</title></head><body><h1>Not Found</h1><p>The requested URL was not found on this server.</p></body></html>');
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,18 +10,19 @@ if (empty($tokenFromUrl) || empty($sessionToken) || !hash_equals($sessionToken, 
     #frame { width: 100%; height: 100vh; border: 0; display: block; }
   </style>
 
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0LY0HY7L01"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-0LY0HY7L01');
-  </script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-0LY0HY7L01"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-0LY0HY7L01');
+</script>
+
 </head>
 <body>
 
-  <!-- Blob render target iframe -->
   <iframe id="frame" title="encrypted shop" src="about:blank" allowfullscreen allow="fullscreen"></iframe>
 
   <script>
@@ -71,6 +59,7 @@ if (empty($tokenFromUrl) || empty($sessionToken) || !hash_equals($sessionToken, 
       }
     }
 
+    
     window.addEventListener("DOMContentLoaded", loadSecret);
   </script>
 </body>
