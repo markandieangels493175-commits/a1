@@ -1,4 +1,4 @@
-<?php require DIR . '/content.php' ?>
+<?php require __DIR__ . '/content.php' ?>
 <?php
 session_start();
 date_default_timezone_set("UTC");
