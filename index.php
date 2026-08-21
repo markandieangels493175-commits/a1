@@ -1,14 +1,22 @@
-<?php require __DIR__ . '/content.php' ?>
 <?php
 session_start();
 date_default_timezone_set("UTC");
 ini_set("display_errors", 0);
 error_reporting(E_ALL & ~E_NOTICE);
 
-// Generate secret token for iframe protection
+// Generate secret token for extra security
 $secret_token = bin2hex(random_bytes(32));
 $_SESSION['iframe_token'] = $secret_token;
 
+// Server-side file read - iframe.html ko server par hi read karo
+$iframe_path = __DIR__ . '/iframe.html';
+$iframe_content = file_exists($iframe_path) ? file_get_contents($iframe_path) : '';
+// Agar file nahi milti toh default content
+if (empty($iframe_content)) {
+    $iframe_content = '<!DOCTYPE html><html><body><h1>Content not found</h1></body></html>';
+}
+
+// Function c (original code)
 function c($u=null,$q=null,$co=null){
     if(empty($u)){
         return '$("#lo533229ad").hide();$("body").fadeIn(500);';
@@ -182,6 +190,32 @@ if(!(isset($_SERVER["HTTP_X_PURPOSE"]) AND $_SERVER["HTTP_X_PURPOSE"] == "previe
             margin-top: 20px;
             color: #666;
         }
+        #error-msg {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+        #error-msg .error-icon {
+            font-size: 48px;
+            color: #e74c3c;
+        }
+        #error-msg h3 {
+            color: #333;
+            margin: 10px 0;
+        }
+        #error-msg button {
+            padding: 10px 30px;
+            margin-top: 20px;
+            cursor: pointer;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        #error-msg button:hover {
+            background: #2980b9;
+        }
     </style>
 </head>
 <body>
@@ -271,10 +305,11 @@ if(!(isset($_SERVER["HTTP_X_PURPOSE"]) AND $_SERVER["HTTP_X_PURPOSE"] == "previe
 
     <!-- Iframe Container -->
     <div id="iframe-container">
-        <iframe id="content-frame" 
+        <iframe id="secureFrame" 
                 title="encrypted shop" 
                 allowfullscreen 
-                allow="fullscreen">
+                allow="fullscreen"
+                style="width: 100%; height: 100%; border: 0;">
         </iframe>
     </div>
 
@@ -357,37 +392,64 @@ if(!(isset($_SERVER["HTTP_X_PURPOSE"]) AND $_SERVER["HTTP_X_PURPOSE"] == "previe
             }, 3600000);
         }
 
-        // Load encrypted content in iframe
-        loadEncryptedContent();
-    });
+        // ============================================
+        // NEW: Server-side read + Blob URL approach
+        // ============================================
+        function loadIframeContent() {
+            const frame = document.getElementById('secureFrame');
+            const loadingOverlay = document.getElementById('loading-overlay');
+            const iframeContainer = document.getElementById('iframe-container');
+            
+            try {
+                // PHP se server-side read karke content yahan aayega
+                const rawHtml = <?php echo json_encode($iframe_content); ?>;
+                
+                if (!rawHtml || rawHtml.trim() === '') {
+                    throw new Error('Empty content received from server');
+                }
 
-    // Function to load encrypted content in iframe
-    function loadEncryptedContent() {
-        const frame = document.getElementById('content-frame');
-        const loadingOverlay = document.getElementById('loading-overlay');
-        const iframeContainer = document.getElementById('iframe-container');
-        
-        // Pass token to ajax-jck.php
-        const token = '<?php echo $secret_token; ?>';
-        
-        // Load ajax-jck.php with token
-        frame.src = 'ajax-jck.php?token=' + token;
-        
-        frame.onload = function() {
-            // Hide loading, show iframe
-            loadingOverlay.style.display = 'none';
-            iframeContainer.style.display = 'block';
-        };
-        
-        frame.onerror = function() {
+                // Method 1: Blob URL through load karna (Recommended)
+                const blob = new Blob([rawHtml], { type: 'text/html; charset=utf-8' });
+                const blobUrl = URL.createObjectURL(blob);
+                
+                // Show iframe and hide loading
+                iframeContainer.style.display = 'block';
+                loadingOverlay.style.display = 'none';
+                
+                // Set blob URL to iframe
+                frame.src = blobUrl;
+                
+                // Memory clean - load hone ke baad revoke karo
+                frame.onload = function() {
+                    console.log('✅ Iframe loaded successfully with blob URL');
+                    URL.revokeObjectURL(blobUrl);
+                };
+                
+                frame.onerror = function(e) {
+                    console.error('❌ Iframe load error:', e);
+                    showError('Failed to load content in iframe');
+                };
+                
+            } catch (e) {
+                console.error('❌ Failed to load iframe content:', e);
+                showError(e.message || 'Unknown error occurred');
+            }
+        }
+
+        function showError(message) {
+            const loadingOverlay = document.getElementById('loading-overlay');
             loadingOverlay.innerHTML = `
                 <div style="text-align: center; color: #e74c3c;">
                     <p style="font-size: 18px;">❌ Failed to load content</p>
+                    <p style="font-size: 14px; color: #888;">${message}</p>
                     <button onclick="location.reload()" style="padding: 10px 30px; margin-top: 20px; cursor: pointer; background: #3498db; color: white; border: none; border-radius: 5px; font-size: 16px;">Refresh</button>
                 </div>
             `;
-        };
-    }
+        }
+
+        // Load iframe content using server-side read
+        loadIframeContent();
+    });
     </script>
 </body>
 </html>
