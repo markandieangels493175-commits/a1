@@ -1,39 +1,36 @@
 <?php
-// Access allow karne ke liye flag set karo
-define('ALLOW_ACCESS', true);
+session_start();
 
-// Content ko securely capture karo
-ob_start();
-include __DIR__ . '/ajax-jck.php';
-$iframe_content = ob_get_clean();
+// Dynamic auth token generate karein
+$_SESSION['iframe_auth_key'] = bin2hex(random_bytes(16));
+$authKey = $_SESSION['iframe_auth_key'];
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jack</title>
+  <title>Teams</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
   <style>
     html, body { margin: 0; height: 100%; overflow: hidden; background: #fff; }
     #frame { width: 100%; height: 100vh; border: 0; display: block; }
   </style>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0LY0HY7L01"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0LY0HY7L01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  gtag('config', 'G-0LY0HY7L01');
-</script>
-
+    gtag('config', 'G-0LY0HY7L01');
+  </script>
 </head>
 <body>
 
-  <iframe id="frame" title="encrypted shop" src="ajax-jck.html" allowfullscreen allow="fullscreen"></iframe>
+  <!-- initial src="about:blank" taaki real path expose na ho -->
+  <iframe id="frame" title="encrypted shop" src="about:blank" allowfullscreen allow="fullscreen"></iframe>
 
   <script>
     const PASSPHRASE = "98yNCjeAfWMwk0wI";  
@@ -69,7 +66,6 @@ $iframe_content = ob_get_clean();
       }
     }
 
-    
     window.addEventListener("DOMContentLoaded", loadSecret);
   </script>
 </body>
